@@ -23,6 +23,7 @@ Please note that this is an open source project. I work on it when I can and I i
   * hibernate.cache.region.factory_class=com.googlecode.hibernate.memcached.MemcachedRegionFactory
   * hibernate.memcached.hashAlgorithm=HashAlgorithm.FNV1_64_HASH
   * hibernate.memcached.connectionFactory=KetamaConnectionFactory
+  
 ## 1.3
   * [HashCodeKeyStrategy][1] [StringKeyStrategy][2] are now both deprecated.
   * [Sha1KeyStrategy][3] is now the default strategy.
