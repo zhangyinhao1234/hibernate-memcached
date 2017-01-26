@@ -12,22 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.googlecode.hibernate.memcached.keystrategy;
 
-package com.googlecode.hibernate.memcached;
+public interface KeyStrategy {
 
-import java.util.Map;
-
-public interface Memcache {
-
-    Object get(String key);
-
-    Map<String, Object> getMulti(String... keys);
-
-    void set(String key, int cacheTimeSeconds, Object o);
-
-    void delete(String key);
-
-    void incr(String key, int factor, int startingValue);
-
-    void shutdown();
+    String toKey(String regionName, long clearIndex, Object key);
 }

@@ -1,13 +1,12 @@
 package com.googlecode.hibernate.memcached.spymemcached;
 
-import net.spy.memcached.*;
-import net.spy.memcached.auth.AuthDescriptor;
-import net.spy.memcached.auth.PlainCallbackHandler;
-
 import com.googlecode.hibernate.memcached.Config;
 import com.googlecode.hibernate.memcached.Memcache;
 import com.googlecode.hibernate.memcached.MemcacheClientFactory;
 import com.googlecode.hibernate.memcached.PropertiesHelper;
+import net.spy.memcached.*;
+import net.spy.memcached.auth.AuthDescriptor;
+import net.spy.memcached.auth.PlainCallbackHandler;
 
 /**
  * Parses hibernate properties to produce a MemcachedClient.<br/>
@@ -153,8 +152,8 @@ public class SpyMemcacheClientFactory implements MemcacheClientFactory {
 
     public HashAlgorithm getHashAlgorithm() {
         return properties.getEnum(PROP_HASH_ALGORITHM,
-                DefaultHashAlgorithm.class,
-                DefaultHashAlgorithm.NATIVE_HASH);
+        		 DefaultHashAlgorithm.class,
+                 DefaultHashAlgorithm.NATIVE_HASH);
     }
 
     public String getConnectionFactoryName() {

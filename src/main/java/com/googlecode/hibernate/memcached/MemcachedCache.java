@@ -1,4 +1,4 @@
-/* Copyright 2008 Ray Krueger
+/* Copyright 2015, the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,9 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.googlecode.hibernate.memcached;
 
-import org.hibernate.cache.Cache;
+import com.googlecode.hibernate.memcached.keystrategy.KeyStrategy;
+import com.googlecode.hibernate.memcached.keystrategy.Sha1KeyStrategy;
 import org.hibernate.cache.CacheException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,13 +24,13 @@ import org.slf4j.LoggerFactory;
 import java.util.Map;
 
 /**
- * Wrapper around MemcachedClient instance to provide the bridge between Hiberante and Memcached.
- * Uses the regionName given by Hibernate via the {@link com.googlecode.hibernate.memcached.MemcachedCacheProvider}
+ * Wrapper around MemcachedClient instance to provide the bridge between Hibernate and Memcached.
+ * Uses the regionName given by Hibernate via the {@link MemcachedRegionFactory}
  * when generating cache keys.
- * All cache operations rely on using a {@link com.googlecode.hibernate.memcached.KeyStrategy}
+ * All cache operations rely on using a {@link KeyStrategy}
  * to generate cache keys for use in memcached.
- * <p/>
- * Support for the {@link #clear()} operation is disabled by default.<br/>
+ * <p>
+ * Support for the {@link #clear()} operation is disabled by default.<br>
  * There is no way for this instance of MemcachedCache to know what cache values to "clear" in a given Memcached instance.
  * Clear functionality is implemented by incrementing a "clearIndex" value that is always included in the cache-key generation.
  * When clear is called the memcached increment function is used to increment the global clean index. When clear is enabled,
@@ -36,16 +38,16 @@ import java.util.Map;
  * applied to the cache key for the cache operation being taken. When the clearIndex is incremented this causes
  * the MemcachedCache to generate different cache-keys than it was before. This results in previously cached data being
  * abandoned in the cache, and left for memcached to deal with.
- * <p/>
+ * <p>
  * For these reasons it is not recommended to rely on clear() as a regular production functionality,
  * it is very expensive and generally not very useful anyway.
- * <p/>
+ * <p>
  * The MemcachedCache treats Hibernate cache regions as namespaces in Memcached. For more information see the
- * <a href="http://www.socialtext.net/memcached/index.cgi?faq#namespaces">memcached FAQ</a>.
+ * <a href="https://code.google.com/p/memcached/wiki/NewProgrammingTricks#Namespacing">memcached FAQ</a>.
  *
  * @author Ray Krueger
  */
-public class MemcachedCache implements Cache {
+public class MemcachedCache {
 
     private final Logger log = LoggerFactory.getLogger(MemcachedCache.class);
 
@@ -60,9 +62,10 @@ public class MemcachedCache implements Cache {
 
     public static final Integer DOGPILE_TOKEN = 0;
 
-    public MemcachedCache(String regionName, Memcache memcachedClient) {
+    public MemcachedCache(String regionName, Memcache memcachedClient, Config config) {
         this.regionName = (regionName != null) ? regionName : "default";
         this.memcache = memcachedClient;
+        this.cacheTimeSeconds = config.getCacheTimeSeconds(this.regionName);
         clearIndexKey = this.regionName.replaceAll("\\s", "") + ":index_key";
     }
 
@@ -180,8 +183,7 @@ public class MemcachedCache implements Cache {
      * Clear functionality is disabled by default.
      * Read this class's javadoc for more detail.
      *
-     * @throws CacheException
-     * @see com.googlecode.hibernate.memcached.MemcachedCache
+     * @see MemcachedCache
      */
     public void clear() throws CacheException {
         if (clearSupported) {
@@ -223,7 +225,7 @@ public class MemcachedCache implements Cache {
         return -1;
     }
 
-    public Map<?,?> toMap() {
+    public Map<?, ?> toMap() {
         throw new UnsupportedOperationException();
     }
 

@@ -12,22 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.googlecode.hibernate.memcached.keystrategy;
 
-package com.googlecode.hibernate.memcached;
+public abstract class DigestKeyStrategy extends AbstractKeyStrategy {
 
-import java.util.Map;
+    protected String transformKeyObject(Object key) {
+        return key.toString() + ":" + key.hashCode();
+    }
 
-public interface Memcache {
+    protected String concatenateKey(String regionName, long clearIndex, Object key) {
+        String longKey = super.concatenateKey(regionName, clearIndex, key);
+        return digest(longKey);
+    }
 
-    Object get(String key);
-
-    Map<String, Object> getMulti(String... keys);
-
-    void set(String key, int cacheTimeSeconds, Object o);
-
-    void delete(String key);
-
-    void incr(String key, int factor, int startingValue);
-
-    void shutdown();
+    protected abstract String digest(String string);
 }

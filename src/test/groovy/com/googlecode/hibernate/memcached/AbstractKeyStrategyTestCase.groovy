@@ -1,7 +1,5 @@
 package com.googlecode.hibernate.memcached
 
-import org.junit.Test
-
 /**
  * DOCUMENT ME!
  *
@@ -20,11 +18,9 @@ abstract class AbstractKeyStrategyTestCase extends BaseTestCase {
         assertEquals(expected, key)
     }
 
-    void test_assert_null_key_does_not_validate() {
-        try {
+    void assert_null_key_does_not_validate() {
+        shouldFailWithCause(IllegalArgumentException.class) {
             strategy.toKey(null, 0, null)
-            fail(IllegalArgumentException.class.name + " expected.");
-        } catch (IllegalArgumentException expected) {
         }
     }
 

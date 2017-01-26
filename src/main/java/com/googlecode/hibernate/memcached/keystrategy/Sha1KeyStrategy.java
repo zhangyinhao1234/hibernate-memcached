@@ -13,21 +13,12 @@
  * limitations under the License.
  */
 
-package com.googlecode.hibernate.memcached;
+package com.googlecode.hibernate.memcached.keystrategy;
 
-import java.util.Map;
+import com.googlecode.hibernate.memcached.utils.StringUtils;
 
-public interface Memcache {
-
-    Object get(String key);
-
-    Map<String, Object> getMulti(String... keys);
-
-    void set(String key, int cacheTimeSeconds, Object o);
-
-    void delete(String key);
-
-    void incr(String key, int factor, int startingValue);
-
-    void shutdown();
+public class Sha1KeyStrategy extends DigestKeyStrategy {
+    protected String digest(String key) {
+        return StringUtils.sha1Hex(key);
+    }
 }
