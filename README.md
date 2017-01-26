@@ -14,6 +14,7 @@ Please note that this is an open source project. I work on it when I can and I i
 # Versions
 ## 1.7-5.2.1
   * 基于hibernate 5.2.1 进行编译和修改
+  
 ## 1.7-5.0.11
   * 基于hibernate 5.0.11 进行编译和修改，spring boot 1.3.4使用的 hibernate5.0.11 因此基于此版本开发
   * hibernate.cache.region.factory_class=com.googlecode.hibernate.memcached.MemcachedRegionFactory
