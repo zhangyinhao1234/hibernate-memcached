@@ -16,10 +16,9 @@
 package com.googlecode.hibernate.memcached.region;
 
 import com.googlecode.hibernate.memcached.MemcachedCache;
-
 import org.hibernate.cache.CacheException;
 import org.hibernate.cache.spi.TimestampsRegion;
-import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,12 +31,12 @@ public class MemcachedTimestampsRegion extends AbstractMemcachedRegion implement
     }
 
     @Override
-    public Object get(SessionImplementor session, Object key) throws CacheException {
+    public Object get(SharedSessionContractImplementor session, Object key) throws CacheException {
         return cache.get(key);
     }
 
     @Override
-    public void put(SessionImplementor session, Object key, Object value) throws CacheException {
+    public void put(SharedSessionContractImplementor session, Object key, Object value) throws CacheException {
         cache.put(key, value);
     }
 
