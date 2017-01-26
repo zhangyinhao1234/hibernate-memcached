@@ -1,14 +1,13 @@
 # Hibernate-memcached
 A library for using Memcached as a second level distributed cache in Hibernate.支持hibernate 5
-  * Based on the excellent spymemcached client
-  * Includes support for the Whalin (danga) memcached client
+  * Based on the excellent spymemcached 2.12.1 client
   * Supports entity and query caching.
 
 # Help
 If you have any questions, or just want to drop a line to say it's working great :) use the [google-group](http://groups.google.com/group/hibernate-memcached).
 
-Please note that this is an open source project. I work on it when I can and I implement what I feel like. I am volunteering my own free time for my own amusement.
-发现问题请发送邮件到 zhangyinhao1234@163.com
+  * Please note that this is an open source project. I work on it when I can and I implement what I feel like. I am volunteering my own free time for my own amusement.
+  * 发现问题请发送邮件到 zhangyinhao1234@163.com
 
 # Versions
 ## 1.7-5.2.7
