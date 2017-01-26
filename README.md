@@ -12,6 +12,9 @@ Please note that this is an open source project. I work on it when I can and I i
 发现问题请发送邮件到 zhangyinhao1234@163.com
 
 # Versions
+## 1.7-5.2.7
+  * 基于hibernate 5.2.7 进行编译和修改
+
 ## 1.7-5.2.1
   * 基于hibernate 5.2.1 进行编译和修改
   
