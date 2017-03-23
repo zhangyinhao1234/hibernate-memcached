@@ -4,9 +4,6 @@ A library for using Memcached as a second level distributed cache in Hibernate 5
   * Supports entity and query caching.
 
 # Help
-If you have any questions, or just want to drop a line to say it's working great :) use the [google-group](http://groups.google.com/group/hibernate-memcached).
-
-  * Please note that this is an open source project. I work on it when I can and I implement what I feel like. I am volunteering my own free time for my own amusement.
   * 发现问题请发送邮件到 zhangyinhao1234@163.com
 
 # Versions
