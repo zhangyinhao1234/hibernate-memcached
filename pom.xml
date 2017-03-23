@@ -2,8 +2,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.googlecode</groupId>
     <artifactId>hibernate5-memcached</artifactId>
-    <version>1.7-5.2.7-SNAPSHOT</version>
-    <name>hibernate5-memcached</name>
+    <version>1.7-5.0.12-SNAPSHOT</version>
+    <name>hibernate5-memcached-1.7-5.0.12</name>
     <description>A library for using Memcached as a second level distributed cache in Hibernate.</description>
     <url>http://code.google.com/p/hibernate-memcached/</url>
     <packaging>jar</packaging>
@@ -137,11 +137,12 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.5.6</version>
+            <scope>provided</scope>
         </dependency>
          <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.2.7.Final</version>
+            <version>5.0.12.Final</version>
             <scope>provided</scope>
         </dependency>
        

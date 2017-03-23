@@ -16,9 +16,10 @@
 package com.googlecode.hibernate.memcached.region;
 
 import com.googlecode.hibernate.memcached.MemcachedCache;
+
 import org.hibernate.cache.CacheException;
 import org.hibernate.cache.spi.QueryResultsRegion;
-import org.hibernate.engine.spi.SharedSessionContractImplementor;
+import org.hibernate.engine.spi.SessionImplementor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,12 +32,12 @@ public class MemcachedQueryResultsRegion extends AbstractMemcachedRegion impleme
     }
 
     @Override
-    public Object get(SharedSessionContractImplementor session, Object key) throws CacheException {
+    public Object get(SessionImplementor session, Object key) throws CacheException {
         return cache.get(key);
     }
 
     @Override
-    public void put(SharedSessionContractImplementor session, Object key, Object value) throws CacheException {
+    public void put(SessionImplementor session, Object key, Object value) throws CacheException {
         cache.put(key, value);
     }
 
@@ -47,5 +48,6 @@ public class MemcachedQueryResultsRegion extends AbstractMemcachedRegion impleme
     public void evictAll() throws CacheException {
         cache.clear();
     }
+
 
 }
