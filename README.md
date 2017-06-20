@@ -8,7 +8,7 @@ A library for using Memcached as a second level distributed cache in Hibernate 5
   * 发现问题请发送邮件到 zhangyinhao1234@163.com
 
 # Versions
-## maste
+## master
   * 基于hibernate 5.2.7 进行编译和修改
   * hibernate.memcached.hashAlgorithm=HashAlgorithm.FNV1_64_HASH
   * hibernate.memcached.connectionFactory=KetamaConnectionFactory
