@@ -6,7 +6,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.cache.spi.support.DomainDataStorageAccess;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
-
+/**
+ * 
+ * @author zhang
+ *
+ */
 public class StorageAccessImpl implements DomainDataStorageAccess {
 	private Log logger = LogFactory.getLog(StorageAccessImpl.class);
 	private final MemcachedCache cache;
