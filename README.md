@@ -9,7 +9,7 @@ A library for using Memcached as a second level distributed cache in Hibernate 5
 
 # Versions
 ## master
-  * 基于hibernate 5.2.17.Final 进行编译和修改
+  * 基于hibernate 5.3.1.Final 进行编译和修改，和Hibernate 5.2.x有接口上区别。hibernate5.2.x无法使用
   * hibernate.memcached.hashAlgorithm=HashAlgorithm.FNV1_64_HASH
   * hibernate.memcached.connectionFactory=KetamaConnectionFactory
   * hibernate.cache.region.factory_class=com.googlecode.hibernate.memcached.MemcachedRegionFactory(spy客户端配置)
@@ -37,4 +37,3 @@ A library for using Memcached as a second level distributed cache in Hibernate 5
   * hibernate.memcached.hashAlgorithm=HashAlgorithm.FNV1_64_HASH
   * hibernate.memcached.connectionFactory=KetamaConnectionFactory
 
- 
