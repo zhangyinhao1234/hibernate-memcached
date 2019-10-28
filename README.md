@@ -3,7 +3,7 @@ A library for using Memcached as a second level distributed cache in Hibernate 5
   * 支持 spymemcached 2.12.3 client
   * 支持 com.danga client
   * 支持查询缓存和对象缓存
-  * 原理是版本只能支持到Hibernate 3.6，Hibernate 3.x和5.x代码上有本质的改动
+  * 原版本只能支持到Hibernate 3.6，Hibernate 3.x和5.x代码上有本质的改动
 
 # Help
   * 发现问题请发送邮件到 zhangyinhao1234@163.com
