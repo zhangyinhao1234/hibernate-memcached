@@ -6,7 +6,7 @@ A library for using Memcached as a second level distributed cache in Hibernate 5
   * 原版本只能支持到Hibernate 3.6，Hibernate 3.x和5.x代码上有本质的改动
 
 # Help
-  * 发现问题请发送邮件到 zhangyinhao1234@163.com
+  * 发现问题请发送邮件到 zhangyinhao1234@gmail.com
 
 # Versions
 ## master
